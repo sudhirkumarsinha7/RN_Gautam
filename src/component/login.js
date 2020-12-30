@@ -100,7 +100,7 @@ class log extends Component {
       marginRight : 50,
       }}>
           <Button onPress={()=>this.getReg()}
-            title="Cancel" 
+            title="Cancel1" 
             color="#F44335"
           />
       </View>
