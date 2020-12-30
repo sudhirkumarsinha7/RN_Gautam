@@ -97,7 +97,7 @@ class log extends Component {
       style = {{
       marginTop : -35,
       marginLeft : 180,
-      marginRight : 20,
+      marginRight : 50,
       }}>
           <Button onPress={()=>this.getReg()}
             title="Cancel" 
