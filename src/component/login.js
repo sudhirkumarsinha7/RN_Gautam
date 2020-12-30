@@ -101,7 +101,7 @@ class log extends Component {
       }}>
           <Button onPress={()=>this.getReg()}
             title="Cancel" 
-            color="#F44336"
+            color="#F44335"
           />
       </View>
     </View>
