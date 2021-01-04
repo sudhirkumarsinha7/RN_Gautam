@@ -7,10 +7,7 @@ class App extends Component{
   render(){
     return(
       <ScrollView>
-        <Regi
-        Gautam = {'Gupta'}/>
-        <Regi
-        Gautam = {'Gupta'}/>
+        <Regi/>
       </ScrollView>
         
     );
