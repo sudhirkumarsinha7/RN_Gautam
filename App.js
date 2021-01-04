@@ -1,14 +1,17 @@
 import React,{Component} from 'react';
-import {Button, Text, View,TextInput,Alert} from 'react-native';
+import {Button, Text, View,TextInput,ScrollView} from 'react-native';
 import Login from "./src/component/login";
-import Regi from "./src/component/dropdowntest";
+import Regi from "./src/component/reg";
 
 class App extends Component{
   render(){
     return(
-      <View>
-        <Regi/>
-      </View>
+      <ScrollView>
+        <Regi
+        Gautam = {'Gupta'}/>
+        <Regi
+        Gautam = {'Gupta'}/>
+      </ScrollView>
         
     );
   }
