@@ -19,7 +19,7 @@ const Run = () => {
     return (
         // <NavigationContainer>
             <StackList/>
-        /*{ </NavigationContainer> } */
+        //  </NavigationContainer> 
     );
 }
 export default Run

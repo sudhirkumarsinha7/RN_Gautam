@@ -4,7 +4,14 @@
 
 
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { ScrollView,View, Text, Button } from 'react-native';
+import { tankData } from '../../../common/defaultvalue';
+
+
+var arr = tankData.data.assets
+var output = arr.map(each => {
+    return each.asset_id
+})
 
 class HomeContent extends Component {
     render() {
@@ -18,11 +25,16 @@ class HomeContent extends Component {
                 <Text style={{ alignSelf: 'center', padding: 30, fontSize: 15 }}>
                     React Native is an open source framework for building Android and iOS applications using React
                     and the app platform’s native capabilities. With React Native, you use JavaScript to access
-                    your platform’s APIs as well as to describe the appearance and behavior of your UI using React
-                    components: bundles of reusable, nestable code. You can learn more about React in the next
-                    section. But first, let’s cover how components work in React Nativ
+                    your platform’s APIs as well as to describe the appearance .
                 </Text>
                 <Button title="Learn More" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
+
+                <ScrollView style={{flex:2, borderWidth: 5, padding: 20}}> 
+                    <Text>
+                        {'Asset-IDs fetched with JSON File using "map" function \n\n'+ JSON.stringify(output)}
+                    </Text>
+                </ScrollView>
+
 
             </View>
         )

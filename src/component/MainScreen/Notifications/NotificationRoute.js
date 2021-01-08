@@ -7,7 +7,7 @@ import news from "./news";
 import Second from "./oldNews";
 
 const Stack = createStackNavigator();
-const StackList = () => {
+const StackList1 = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="news" component={news} />
@@ -15,11 +15,11 @@ const StackList = () => {
         </Stack.Navigator>
     )
 }
-const Run1 = () => {
+const Notification = () => {
     return (
-        // <NavigationContainer>
-            <StackList />
-        // </NavigationContainer>
+    // <NavigationContainer>
+        <StackList1 />
+    // </NavigationContainer>
     );
 }
-export default Run1
+export default Notification
