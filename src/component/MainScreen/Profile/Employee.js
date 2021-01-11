@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TextInput, FlatList } from 'react-native';
+import { tankData } from '../../../common/defaultvalue'
+
 class Employee extends Component {
+
+    eachItem(item) {
+        return (
+
+            <View style={{ borderWidth:1, padding:10}}>
+                {/* <Text>{JSON.stringify(item)}</Text> */}
+                <Text>{item.asset_id+''}</Text>
+
+            </View>);
+    }
     render() {
         return (
-            <View style={{ flex: 1, borderWidth: 5, padding: 20 }}>
+            <View >
                 <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
                     All Profiles
                 </Text>
-                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 15 }}>
-                        Gautam Prasad Gupta
-                        Ashutosh Kumar Choudhary
-                        Sudhir Ranjan
-                        Mukul Srivastava
-                </Text>
-                <Button title="Selected Employees" onPress={() => { this.props.navigation.navigate('SelectedProfile') }}></Button>
+
+
+                <FlatList
+                        data={tankData.data.assets}
+
+                        renderItem={({item}) => (
+                            this.eachItem(item)
+                        )}
+                        keyExtractor={(item) => item.asset_id}
+
+                    />
             </View>
         )
     }

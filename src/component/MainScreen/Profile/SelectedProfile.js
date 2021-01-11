@@ -8,13 +8,8 @@ class SelectedProfile extends Component {
                 <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
                     Profile selected for Hackathon'20.
                 </Text>
-                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 15 }}>
-                        dksljfhgiusydfgsuy
-                        akfhdgahufjahwefg
-                        ajhwgfjhagwfwfekf
-                        wjefhghjwefjwefgjhkwef
-                        wjkeruwejfgjhawfjhgasdfjhg
-                        gahdfuyafjavj
+                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 25 }}>
+                        Welcome to the Teams !!
                 </Text>
                 <Button title="Back to Profile Home" onPress={() => { this.props.navigation.goBack() }}></Button>
             </View>

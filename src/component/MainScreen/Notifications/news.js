@@ -18,7 +18,7 @@ class news extends Component {
                     Using deprecated packages
                     Uninstalling packages and dependencies
                 </Text>
-                <Button title="Old News" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
+                <Button title="Old News" onPress={() => { this.props.navigation.navigate('old') }}></Button>
             </View>
         )
     }
