@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 
-class SelectedProfile extends Component {
+class ReactNative extends Component {
     render() {
         return (
             <View style={{ flex: 1, borderWidth: 5, padding: 10 }}>
+
                 <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
-                    Profile selected for Hackathon'20.
+                    Login/Sign Up
                 </Text>
-                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 25 }}>
-                        Welcome to the Teams !!
+
+                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 15 }}>
+                    Login Details.
                 </Text>
-                <Button title="Back to Profile Home" onPress={() => { this.props.navigation.goBack() }}></Button>
+                <Button title="Back to Home" onPress={() => { this.props.navigation.goBack() }}></Button>
+
             </View>
         )
     }
 }
-export default SelectedProfile;
+export default ReactNative;

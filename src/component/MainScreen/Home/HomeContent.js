@@ -4,8 +4,9 @@
 
 
 import React, { Component } from 'react';
-import { ScrollView,View, Text, Button } from 'react-native';
+import { ImageBackground, ScrollView, View, Text, Button, TouchableOpacity, } from 'react-native';
 import { tankData } from '../../../common/defaultvalue';
+import { buttons, btnStyle } from '../../../common/style'
 
 
 var arr = tankData.data.assets
@@ -16,27 +17,85 @@ var output = arr.map(each => {
 class HomeContent extends Component {
     render() {
         return (
-            <View style={{ flex: 1, borderWidth: 5, padding: 20 }}>
 
-                <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
-                    Welcome to the Homepage
+            <ScrollView style={{ flex: 1, }}>
+                <ImageBackground style={{ height: 1000 }}
+                    source={require('../../../common/Images/space.png')}>
+                    <Text style={{ color: 'white', alignSelf: 'center', padding: 10, fontSize: 22, fontWeight: 'bold', }}>
+                        Welcome to the Homepage
                 </Text>
 
-                <Text style={{ alignSelf: 'center', padding: 30, fontSize: 15 }}>
-                    React Native is an open source framework for building Android and iOS applications using React
-                    and the app platform’s native capabilities. With React Native, you use JavaScript to access
-                    your platform’s APIs as well as to describe the appearance .
+                    <Text style={{ color: 'white', marginTop: 20, alignSelf: 'center', padding: 20, fontSize: 20 }}>
+                        This page is associated with all the document which is useful to develop, Andriod Applications and iOS Applications.
                 </Text>
-                <Button title="Learn More" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
 
-                <ScrollView style={{flex:2, borderWidth: 5, padding: 20}}> 
+
+                    {/* <Text onPress={() => Linking.openURL('https://google.com'), this.props.navigation.navigate('Second')} >Click Here To Open Google</Text> */}
+
+
+                    <View>
+                        <TouchableOpacity
+                            style={{
+                                marginTop: 10, marginLeft: 120, marginRight: 120,
+                                alignItems: 'center', borderRadius: 10,
+                                backgroundColor: 'white', padding: 10
+                            }}
+                            onPress={() => { this.props.navigation.navigate('Redux') }}>
+                            <Text style={{ fontSize: 20 }}>Redux</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity
+                                style={{
+                                    marginTop: 10, marginLeft: 120, marginRight: 120,
+                                    alignItems: 'center', borderRadius: 10,
+                                    backgroundColor: 'white', padding: 10
+                                }}
+                                onPress={() => { this.props.navigation.navigate('Javascript') }}>
+                                <Text style={{ fontSize: 20 }}>JavaScript</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity
+                                style={{
+                                    marginTop: 10, marginLeft: 120, marginRight: 120,
+                                    alignItems: 'center', borderRadius: 10,
+                                    backgroundColor: 'white', paddingTop: 10, paddingBottom:10
+                                }}
+                                onPress={() => { this.props.navigation.navigate('RN')}}>  
+                                 <Text style={{ fontSize: 17, }}>React-Native</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                    <TouchableOpacity
+                                style={{
+                                    marginTop: 10, marginLeft: 120, marginRight: 120,
+                                    alignItems: 'center', borderRadius: 10,
+                                    backgroundColor: 'white', padding: 10
+                                }}
+                                onPress={() => { this.props.navigation.navigate('ReactNav') }}> 
+                                <Text style={{ fontSize: 13 }}>React Navigation</Text>
+                        </TouchableOpacity>
+                    </View>
+
+
+
+
+
+                    {/* <Button title="JavaScript" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
+                <Button title="React Navigations" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
+                <Button title="Redux" onPress={() => { this.props.navigation.navigate('Second') }}></Button> */}
+
+
+                    {/* <ScrollView style={{flex:2, borderWidth: 5, padding: 20}}> 
                     <Text>
                         {'Asset-IDs fetched with JSON File using "map" function \n\n'+ JSON.stringify(output)}
                     </Text>
-                </ScrollView>
+                </ScrollView> */}
 
-
-            </View>
+                </ImageBackground>
+            </ScrollView>
         )
     }
 }

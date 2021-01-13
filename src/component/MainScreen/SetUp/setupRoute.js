@@ -3,15 +3,18 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import news from "./news";
-import old from "./oldNews";
+import SetUp from "./SetUp";
+import Ios from "./iosSetup";
+import androidsetup from "./androidsetup";
+
 
 const Stack = createStackNavigator();
 const StackList1 = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="news" component={news} />
-            <Stack.Screen name="old" component={old} />
+            <Stack.Screen name="SetUp" component={SetUp} />
+            <Stack.Screen name="Ios" component={Ios} />
+            <Stack.Screen name="androidsetup" component={androidsetup}/>
         </Stack.Navigator>
     )
 }
