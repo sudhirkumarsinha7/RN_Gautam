@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SetUp from "./SetUp";
 import Ios from "./iosSetup";
 import androidsetup from "./androidsetup";
-
+import QRSetup from './QRSetup';
 
 const Stack = createStackNavigator();
 const StackList1 = () => {
@@ -15,6 +15,7 @@ const StackList1 = () => {
             <Stack.Screen name="SetUp" component={SetUp} />
             <Stack.Screen name="Ios" component={Ios} />
             <Stack.Screen name="androidsetup" component={androidsetup}/>
+            <Stack.Screen name="QRSetup" component={QRSetup}/>
         </Stack.Navigator>
     )
 }

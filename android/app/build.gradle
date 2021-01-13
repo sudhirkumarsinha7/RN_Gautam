@@ -134,6 +134,12 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "0.0.1"
+        ndk {
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+        multiDexEnabled true //Add this
+        missingDimensionStrategy 'react-native-camera', 'mlkit' 
+
     }
     splits {
         abi {

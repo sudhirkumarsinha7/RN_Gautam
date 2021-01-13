@@ -20,7 +20,6 @@ const btnstyle =StyleSheet.create({
 
 const buttons = StyleSheet.create({ 
     primary: { 
-    
         flexDirection:'row',
         borderWidth:2,
         borderColor:'white',

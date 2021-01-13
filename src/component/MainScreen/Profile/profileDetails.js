@@ -12,6 +12,7 @@ import { textinput, heading, styles, imageStyle } from '../../../common/style';
 import { Helper } from '../../../common/helperComponent';
 import Modal from 'react-native-modal'
 
+
 class profileDetails extends Component {
     constructor(props) {
         super(props);
@@ -65,7 +66,7 @@ class profileDetails extends Component {
                                         alignItems: 'center', borderRadius: 100,
                                         backgroundColor: '#008b8b', padding: 10
                                     }}
-                                    onPress={this.alertFun}                                >
+                                    onPress={this.alertFun}>
                                     <Text style={{ fontWeight: 'bold', color: 'white' }}>Camera</Text>
                                 </TouchableOpacity>
 
