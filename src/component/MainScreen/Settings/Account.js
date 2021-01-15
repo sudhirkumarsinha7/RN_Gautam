@@ -65,6 +65,10 @@ class Account extends Component {
                 <View style={{padding:20}}>
                 <Button title="Privacy Settings" onPress={() => { this.props.navigation.navigate('Privacy') }}></Button>
                 </View>
+
+                <View style={{padding:20}}>
+                <Button title="Google Map" onPress={() => { this.props.navigation.navigate('Map') }}></Button>
+                </View>
             </View>
         )
     }

@@ -159,6 +159,9 @@ class QRSetup extends Component {
                     <Text style={{fontSize:20, fontWeight:'bold', color:'#8b4513'}}>
                         Fetch Function Implementation
                     </Text>
+                    <View>
+                        
+                    </View>
                 </View>
             </View>
         )
