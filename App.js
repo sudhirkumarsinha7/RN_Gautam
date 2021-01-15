@@ -3,6 +3,7 @@ import { Text, ScrollView } from 'react-native';
 import Login from "./src/component/login";
 // import {tankData} from "./src/common/defaultvalue";
 import Route from "./src/component/MainScreen/BottomNavigator";
+// import Route from "./src/component/MainScreen/SetUp/QRCode"
 
 
 const App = () => {

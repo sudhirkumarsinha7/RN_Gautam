@@ -48,8 +48,7 @@ class profileDetails extends Component {
                                 alignItems: 'center', borderRadius: 100,
                                 backgroundColor: 'red', padding: 10
                             }}
-                            onPress={this.onClick}
-                        >
+                            onPress={this.onClick}>
                             <Text style={{ fontWeight: 'bold' }}>Update</Text>
                         </TouchableOpacity>
 

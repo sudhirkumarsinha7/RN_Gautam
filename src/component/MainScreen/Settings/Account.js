@@ -29,11 +29,11 @@ class Account extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, borderWidth: 5, padding: 20 }}>
+            <View style={{ flex: 1, borderWidth: 0, padding: 0, alignSelf:'center' }}>
                 <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
                     Account Settings
                 </Text>
-                <Text style={{ alignSelf: 'center', padding: 20, fontSize: 20 }}>
+                <Text style={{  padding: 0, fontSize: 20 }}>
                     String Manipulation Implementation
                 </Text>
 
@@ -56,12 +56,15 @@ class Account extends Component {
                     value={this.state.password}
                     onChangeText={text => this.setPass(text)}
                 />
-
-                <Button title="Submit" onPress={this.getString} />
-
-
                 
+                <View style={{padding:40}}>
+                <Button title="Submit" onPress={this.getString} />
+                </View>
+
+
+                <View style={{padding:20}}>
                 <Button title="Privacy Settings" onPress={() => { this.props.navigation.navigate('Privacy') }}></Button>
+                </View>
             </View>
         )
     }

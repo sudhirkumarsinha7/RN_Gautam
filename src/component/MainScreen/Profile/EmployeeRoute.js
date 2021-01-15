@@ -8,6 +8,7 @@ import login from "./login";
 import reg from "./reg.js";
 import profileDetails from "./profileDetails";
 
+
 const Stack = createStackNavigator();
 const StackList = () => {
     return (
