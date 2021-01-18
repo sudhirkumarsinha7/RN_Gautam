@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, TouchableOpacity, Alert, Touchable } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert, Button } from 'react-native';
 import { styles, buttons, heading, textinput } from '../../../common/style';
 import Modal from 'react-native-modal';
 import { RNCamera } from 'react-native-camera';
 import BarCodeScanner from './BarCode';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 class QRSetup extends Component {
@@ -18,19 +19,45 @@ class QRSetup extends Component {
         this.stateUpdater = this.stateUpdater.bind(this);
         this.state = {
             shouldDisplayCamera: false,
+            data: [],
+            city: '',
+            cityName: '',
+            isLoading: false,
+            list: []
         };
-
     }
+    componentDidMount() {
+        this.getCity();
+    }
+    getCity = async () => {
+        let listData = await AsyncStorage.getItem(global.globalCityList)
+        let tempData = JSON.parse(listData)
+        console.log('QrScanner listData- ', listData)
+        console.log('tempData - ', tempData)
+
+        //  this.setState({list: tempData})
+    }
+    getTempList = async () => {
+        let listData = await AsyncStorage.getItem(global.globalCityList)
+        let tempData = JSON.parse(listData)
+        return <View>
+            <Text>{JSON.stringify(tempData)}</Text>
+        </View>
+    }
+
+
+
+    //Setting up text
     setText = (text) => {
-        this.setState({ text1: text })
+        this.setState({ temp: text })
     }
     getText = () => {
         <View>
             <Text>
-            {this.state.text1}
+                {this.state.text1}
 
             </Text>
-        </View>    
+        </View>
 
     }
     onClick = () => {
@@ -89,6 +116,44 @@ class QRSetup extends Component {
         this.setState(newState);
     }
 
+    //Set update function for Fetch
+    getSetCityName(city) {
+        this.setState({ cityName: city });
+    }
+    getCurrentTemp = (city) => {
+        let { isLoading, list } = this.state;
+        this.setState({ isLoading: true });
+        let tempList = list;
+        console.log('city', city);
+
+        let url =
+            'https://api.openweathermap.org/data/2.5/weather?q=' +
+            city +
+            '&appid=e75f3d4627ca4fed0759a3605e2e27bd';
+        fetch(url,
+            { 'method': 'GET' })
+            .then((res) => res.json())
+            .then((responseData) => {
+                console.log('responseData ', responseData);
+                this.setState({ isLoading: false });
+                let data = {
+                    cityName: city, Temp: responseData.main.temp
+                }
+                console.log('responseData data', data);
+                console.log('responseData tempList before', tempList);
+
+                tempList = tempList.push(data)
+                console.log('responseData tempList after', tempList);
+                this.setState({ list: tempList })
+
+                AsyncStorage.setItem(global.globalCityList, JSON.stringify(tempList))
+            })
+            .catch((error) => {
+                this.setState({ isLoading: false });
+                console.log(error);
+            });
+    };
+
 
 
 
@@ -112,11 +177,11 @@ class QRSetup extends Component {
                     <View style={{ flext: 0.5, marginLeft: 10, marginTop: 2.5, width: '45%', height: '70%' }}>
                         <TextInput style={{ padding: 10, borderWidth: 2, textDecorationColor: 'red' }}
                             placeholder="Enter QR Code "
-                            onChangeText={text => this.setText(text)}
-                            value={this.state.text1}
+                            onChangeText={text => this.setState({ cityName: text })}
+                            value={this.state.cityName}
                         />
                         <TouchableOpacity onPress={this.getText}>
-                            <Text style={{color:'blue'}}>
+                            <Text style={{ color: 'blue' }}>
                                 Get Data
                             </Text>
                         </TouchableOpacity>
@@ -154,13 +219,14 @@ class QRSetup extends Component {
                         )}
                     </View>
                 </View>
-                {qrcode && <Text>{'QRcode   ' + this.state.qrcode+ ' '+ this.state.getText}</Text>}
-                <View style={{marginTop:30,alignSelf:'center',padding:20}}>
-                    <Text style={{fontSize:20, fontWeight:'bold', color:'#8b4513'}}>
+                {qrcode && <Text>{'QRcode   ' + this.state.qrcode + ' ' + this.state.getText}</Text>}
+                <View style={{ marginTop: 30, alignSelf: 'center', padding: 20 }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#8b4513' }}>
                         Fetch Function Implementation
                     </Text>
+                    <Button title="Find Tempreature" onPress={() => { this.getCurrentTemp(this.state.cityName) }}></Button>
                     <View>
-                        
+                        <Text>{JSON.stringify(this.state.list)}</Text>
                     </View>
                 </View>
             </View>
