@@ -3,9 +3,9 @@ const styles = StyleSheet.create({
     container:{
         alignSelf:'center',
         //flexDirection:'row',
-        borderWidth:2,
+        //borderWidth:2,
         padding:20,
-        marginTop:20
+        marginTop:20,
         
     },
 })
@@ -21,7 +21,7 @@ const btnstyle =StyleSheet.create({
 const buttons = StyleSheet.create({ 
     primary: { 
         flexDirection:'row',
-        borderWidth:2,
+        //borderWidth:2,
         borderColor:'white',
         padding:10,
         marginTop:10,

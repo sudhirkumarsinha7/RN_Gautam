@@ -74,7 +74,7 @@ class Reg extends Component {
 
                     <TextInput
                         style={textinput.textinput1}
-                        placeholder=" "
+                        placeholder="Enter your Name"
                     />
 
                     <Text style={{
@@ -93,7 +93,6 @@ class Reg extends Component {
                     <Text style={{
                         marginTop: 10,
                         fontSize: 20,
-
                         marginLeft: 10
                     }}>Email ID
                     </Text>
@@ -139,16 +138,13 @@ class Reg extends Component {
 
                     </View>
 
-
                     <View>
-
                         <Text style={{
                             fontSize: 20,
                             marginLeft: 25,
-                            marginTop: 15
-                        }}>
+                            marginTop: 15 }}>
                             Select Country
-                </Text>
+                        </Text>
 
                         <DropDownPicker style={{ marginLeft: 20, marginTop: 10 }}
 
@@ -168,15 +164,15 @@ class Reg extends Component {
                             onChangeItem={item => this.setState({
                                 country: item.value
                             })}
-                        />
+                            />
 
                         <View>
                             <Text style={{
                                 marginTop: 10,
                                 fontSize: 20,
                                 marginLeft: 25
-                            }}>Gender
-              </Text>
+                                }}>Gender
+                            </Text>
 
                             {this.functionRadio()}
 
@@ -200,7 +196,6 @@ class Reg extends Component {
                 </View>
                 <View>
                     <Button title="Click Here to Login" color="#006400" onPress={() => { this.props.navigation.navigate('login') }}></Button>
-
                 </View>
 
             </ScrollView>

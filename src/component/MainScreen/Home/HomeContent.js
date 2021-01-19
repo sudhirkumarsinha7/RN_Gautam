@@ -23,15 +23,11 @@ class HomeContent extends Component {
                     source={require('../../../common/Images/space.png')}>
                     <Text style={{ color: 'white', alignSelf: 'center', padding: 10, fontSize: 22, fontWeight: 'bold', }}>
                         Welcome to the Homepage
-                </Text>
+                    </Text>
 
                     <Text style={{ color: 'white', marginTop: 20, alignSelf: 'center', padding: 20, fontSize: 20 }}>
                         This page is associated with all the document which is useful to develop, Andriod Applications and iOS Applications.
-                </Text>
-
-
-                    {/* <Text onPress={() => Linking.openURL('https://google.com'), this.props.navigation.navigate('Second')} >Click Here To Open Google</Text> */}
-
+                    </Text>
 
                     <View>
                         <TouchableOpacity
@@ -78,22 +74,6 @@ class HomeContent extends Component {
                                 <Text style={{ fontSize: 13 }}>React Navigation</Text>
                         </TouchableOpacity>
                     </View>
-
-
-
-
-
-                    {/* <Button title="JavaScript" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
-                <Button title="React Navigations" onPress={() => { this.props.navigation.navigate('Second') }}></Button>
-                <Button title="Redux" onPress={() => { this.props.navigation.navigate('Second') }}></Button> */}
-
-
-                    {/* <ScrollView style={{flex:2, borderWidth: 5, padding: 20}}> 
-                    <Text>
-                        {'Asset-IDs fetched with JSON File using "map" function \n\n'+ JSON.stringify(output)}
-                    </Text>
-                </ScrollView> */}
-
                 </ImageBackground>
             </ScrollView>
         )
