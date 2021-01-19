@@ -11,6 +11,8 @@ import { Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { textinput, heading, styles, imageStyle } from '../../../common/style';
 import { Helper } from '../../../common/helperComponent';
 import Modal from 'react-native-modal'
+import ImagePicker from 'react-native-image-picker';
+
 
 
 class profileDetails extends Component {
@@ -18,16 +20,41 @@ class profileDetails extends Component {
         super(props);
         this.state = {
             photo: false,
+            filePath : '',
         };
     }
     onClick = () => {
-        this.setState({
-            photo: (!this.state.photo)
-        });
+        // this.setState({
+        //     photo: (!this.state.photo)
+        // });
+        this.chooseFile.bind(this)
     };
     alertFun = () => {
         alert('Not Implemented Yet')
     }
+    chooseFile = () => {
+        var options = {
+        title: 'Select Image',
+        storageOptions: {
+        skipBackup: true,
+        path: 'images',
+        },
+        };
+        ImagePicker.showImagePicker(options, response => {
+        console.log('Response = ', response);
+        
+        if (response.didCancel) {
+        console.log('User cancelled image picker');
+        } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        alert(response.customButton);
+        } else if (response.uri) {
+        this.setState({ filePath: response });
+        }
+        });
+        };
 
     render() {
         return (
@@ -38,8 +65,8 @@ class profileDetails extends Component {
                         Your Profile
                 </Text>
                     <View>
-                        <Image style={imageStyle.profileImage}
-                            source={require('../../../common/Images/MyPic.png')} />
+                        {this.state.filePath? <Image style={imageStyle.profileImage} source={{uri: this.state.filePath.uri}}/>:<Image style={imageStyle.profileImage}
+                            source={require('../../../common/Images/MyPic.png')} />}
                     </View>
                     <View>
                         <TouchableOpacity
@@ -48,7 +75,9 @@ class profileDetails extends Component {
                                 alignItems: 'center', borderRadius: 100,
                                 backgroundColor: 'red', padding: 10
                             }}
-                            onPress={this.onClick}>
+                            // onPress={this.chooseFile.bind(this)}>
+
+                             onPress={this.onClick}>
                             <Text style={{ fontWeight: 'bold' }}>Update</Text>
                         </TouchableOpacity>
 

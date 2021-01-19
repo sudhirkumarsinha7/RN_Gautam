@@ -20,6 +20,11 @@ target 'Sample' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'SampleTests' do
     inherit! :complete
     # Pods for testing

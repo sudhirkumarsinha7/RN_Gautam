@@ -13,11 +13,11 @@ const Stack = createStackNavigator();
 const StackList = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="HomeContent" component={HomeContent}/>
-            <Stack.Screen name="RN" component={RN} />
-            <Stack.Screen name="Javascript" component={Javascript} />
-            <Stack.Screen name="ReactNav" component={ReactNav} />
-            <Stack.Screen name="Redux" component={Redux} />
+            <Stack.Screen name="HomeContent" component={HomeContent} options={{headerShown:false}}/>
+            <Stack.Screen name="RN" component={RN} options={{headerShown:false}}/>
+            <Stack.Screen name="Javascript" component={Javascript} options={{headerShown:false}} />
+            <Stack.Screen name="ReactNav" component={ReactNav} options={{headerShown:false}}/>
+            <Stack.Screen name="Redux" component={Redux} options={{headerShown:false}} />
         </Stack.Navigator>
     )
 }

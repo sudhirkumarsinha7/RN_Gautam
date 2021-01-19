@@ -4,7 +4,7 @@
 
 
 import React, { Component } from 'react';
-import { ImageBackground, ScrollView, View, Text, Button, TouchableOpacity, } from 'react-native';
+import { ImageBackground, ScrollView, View, Text, Button, TouchableOpacity,Platform } from 'react-native';
 import { tankData } from '../../../common/defaultvalue';
 import { buttons, btnStyle } from '../../../common/style'
 
@@ -19,9 +19,9 @@ class HomeContent extends Component {
         return (
 
             <ScrollView style={{ flex: 1, }}>
-                <ImageBackground style={{ height: 1000 }}
+                <ImageBackground style={{ height: 1000}}
                     source={require('../../../common/Images/space.png')}>
-                    <Text style={{ color: 'white', alignSelf: 'center', padding: 10, fontSize: 22, fontWeight: 'bold', }}>
+                    <Text style={{ color: 'white', alignSelf: 'center', padding: 10, fontSize: 22, fontWeight: 'bold',marginTop:Platform.OS=='ios'?40:10 }}>
                         Welcome to the Homepage
                     </Text>
 
