@@ -8,12 +8,13 @@ import Privacy from "./Privacy";
 import Map from "./Map";
 
 
+
 const Stack = createStackNavigator();
 const StackList = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Account" component={Account} />
-            <Stack.Screen name="Privacy" component={Privacy} />
+            <Stack.Screen name="Account" component={Account} options={{headerShown:false}}/>
+            <Stack.Screen name="Privacy" component={Privacy}options={{headerShown:false}} />
             <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
     )

@@ -36,9 +36,10 @@ const textinput = StyleSheet.create({
     textinput1:{
         paddingHorizontal: 10,
         marginLeft: 10,
-        borderWidth: 1.5,
-        borderColor: "#00716F",
-        borderRadius: 23,
+        borderWidth: 2.5,
+        borderColor: "white",
+        color :'white',
+        borderRadius: 10,
         paddingVertical: 3,
         fontSize: 15
     }
@@ -61,9 +62,7 @@ const imageStyle = StyleSheet.create({
         alignSelf: 'center',
         borderRadius:100,
     },
-    profIcon:{
-
-    }
+    
 })
  
 export {styles, buttons, textinput, heading, imageStyle};

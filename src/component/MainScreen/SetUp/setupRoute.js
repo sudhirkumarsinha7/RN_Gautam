@@ -12,10 +12,10 @@ const Stack = createStackNavigator();
 const StackList1 = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="SetUp" component={SetUp} />
-            <Stack.Screen name="Ios" component={Ios} />
-            <Stack.Screen name="androidsetup" component={androidsetup}/>
-            <Stack.Screen name="QRSetup" component={QRSetup}/>
+            <Stack.Screen name="SetUp" component={SetUp} options={{headerShown:false}}/>
+            <Stack.Screen name="Ios" component={Ios} options={{headerShown:false}}/>
+            <Stack.Screen name="androidsetup" component={androidsetup}options={{headerShown:false}}/>
+            <Stack.Screen name="QRSetup" component={QRSetup}options={{headerShown:false}}/>
         </Stack.Navigator>
     )
 }

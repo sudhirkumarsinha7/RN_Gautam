@@ -13,10 +13,10 @@ const Stack = createStackNavigator();
 const StackList = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="login" component={login} />
-            <Stack.Screen name="reg" component={reg} />
-            <Stack.Screen name="Employee" component={Employee} /> 
-            <Stack.Screen name="Profile" component={profileDetails} /> 
+            <Stack.Screen name="login" component={login} options={{headerShown:false}}/>
+            <Stack.Screen name="reg" component={reg} options={{headerShown:false}}/>
+            <Stack.Screen name="Employee" component={Employee} options={{headerShown:false}}/> 
+            <Stack.Screen name="Profile" component={profileDetails} options={{headerShown:false}}/> 
 
         </Stack.Navigator>
     )

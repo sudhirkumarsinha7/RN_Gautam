@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, Platform, TouchableOpacity } from 'react-native';
 class Account extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +29,7 @@ class Account extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, borderWidth: 0, padding: 0, alignSelf:'center' }}>
+            <View style={{ flex: 1, borderWidth: 0, padding: 0, alignSelf:'center', marginTop:Platform.OS=='ios'?40:10 }}>
                 <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold', }}>
                     Account Settings
                 </Text>
@@ -38,7 +38,7 @@ class Account extends Component {
                 </Text>
 
                 <Text style={{ paddingTop: 10, fontSize: 18 }}>
-                    Name
+                    Text 1
                 </Text>
 
                 <TextInput style={{ borderWidth: 2, fontSize: 17 }}
@@ -49,7 +49,7 @@ class Account extends Component {
 
 
                 <Text style={{ paddingTop: 10, fontSize: 18 }}>
-                    Password
+                    Text 2
                 </Text>
 
                 <TextInput style={{ borderWidth: 2, fontSize: 17 }}
@@ -61,14 +61,35 @@ class Account extends Component {
                 <Button title="Submit" onPress={this.getString} />
                 </View>
 
-
                 <View style={{padding:20}}>
-                <Button title="Privacy Settings" onPress={() => { this.props.navigation.navigate('Privacy') }}></Button>
+                    <TouchableOpacity
+                            style={{
+                                alignSelf:'center', padding:10, borderRadius: 10, 
+                                backgroundColor: 'green'
+                                }}
+                                onPress={() => { this.props.navigation.navigate('Privacy') }}
+                        >
+                        <Text style={{ fontSize: 16 ,color:'white', fontWeight:'bold', alignSelf:'center'}}>
+                            Privacy Settings
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{padding:20}}>
-                <Button title="Google Map" onPress={() => { this.props.navigation.navigate('Map') }}></Button>
+                    <TouchableOpacity
+                            style={{
+                                alignSelf:'center', padding:10, borderRadius: 10, 
+                                backgroundColor: 'orange'
+                                }}
+                                onPress={() => { this.props.navigation.navigate('Map') }}
+                        >
+                        <Text style={{ fontSize: 16 ,color:'white', fontWeight:'bold', alignSelf:'center'}}>
+                            Google Map
+                        </Text>
+                    </TouchableOpacity>
                 </View>
+                
+                
             </View>
         )
     }

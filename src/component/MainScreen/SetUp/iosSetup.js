@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { ScrollView,View, Text, Button } from 'react-native';
+import { ScrollView,View, Text, TouchableOpacity } from 'react-native';
 
 class iosSetup extends Component {
     render() {
         return (
             <ScrollView style={{ flex: 1, padding: 10 }}>
                 <View>
-                    <Text style={{ alignSelf: 'center', padding: 10, fontSize: 25, fontWeight: 'bold' }}>
+                    <Text style={{ alignSelf: 'center', padding: 10, fontSize: 25, 
+                            backgroundColor:'#adff2f',fontWeight: 'bold' }}>
                         SetUp Enviornment for iOS
                     </Text>
                 </View>
@@ -15,10 +16,8 @@ class iosSetup extends Component {
                         Step 1: Install npm and node.js
                     </Text>
                     <Text style={{ padding: 10, fontSize: 17, }}>
-                         Go to the node.js website (https://nodejs.org/en/)and install node.js. npm is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer.
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                            npm is a package manger for JavaScript programming language, and the default package manager for Node.js Javascript runtime environment.
+                         Go to the node.js website (https://nodejs.org/en/)and install node.js. npm is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer.{'\n\n'}
+                         npm is a package manger for JavaScript programming language, and the default package manager for Node.js Javascript runtime environment.
                     </Text>
                 </View>
 
@@ -98,7 +97,7 @@ class iosSetup extends Component {
                 </View>
 
 
-                <View>
+                <View style={{marginBottom:30}}>
                     <Text style={{ paddingTop: 20, fontSize: 20, fontWeight: 'bold' }}>
                         Step 8: Run React Native Packager
                     </Text>
@@ -115,8 +114,20 @@ class iosSetup extends Component {
                         react-native start
                     </Text>
                 </View>
+                <View style={{padding:20}}>
+                    <TouchableOpacity
+                            style={{
+                                alignSelf:'center', padding:10, borderRadius: 10, 
+                                backgroundColor: 'green'
+                                }}
+                                onPress={() => { this.props.navigation.goBack() }}
+                        >
+                        <Text style={{ fontSize: 16 ,color:'white', fontWeight:'bold', alignSelf:'center'}}>
+                            Back to SetUp Page
+                        </Text>
+                    </TouchableOpacity>
 
-                <Button title="Back to SetUp" onPress={() => { this.props.navigation.navigate('SetUp') }}></Button>
+                </View>
             </ScrollView>
         )
     }

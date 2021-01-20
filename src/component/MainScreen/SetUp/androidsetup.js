@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Button , ScrollView, ImageBackground} from 'react-native';
+import { View, Text, Button , ScrollView, ImageBackground, TouchableOpacity} from 'react-native';
 
 class androidsetup extends Component {
     render() {
         return (
             <ScrollView>
                     <View>
-                    <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, fontWeight: 'bold' }}>
+                    <Text style={{ alignSelf: 'center', padding: 10, fontSize: 20, 
+                        fontWeight: 'bold',backgroundColor:'#adff2f', marginTop:Platform.OS=='ios'?40:10 }}>
                          Enviornment SetUp for Android
                     </Text>
                 </View>
@@ -15,32 +16,17 @@ class androidsetup extends Component {
                         Prerequisites to set up enviornments
                     </Text>
                     <Text style={{ padding: 10, fontSize: 17, }}>
-                        Download software’s
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        1. Node.js (Version 8 or newer) — https://nodejs.org/en/download/
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        2. Chrome — https://www.google.com/chrome/
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        3. Visual Studio Code (you can use any other editor or IDE)
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        4. Android Studio — Download and install the latest version of Android Studio for Windows from https://developer.android.com/studio/
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        5. Java Development Kit (JDK 8 or newer)
-                        Download and install the latest version of Java SDK from http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html.
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        6. Download and install Python 2.7.15 from https://www.python.org/downloads/windows/
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
-                        7. Intel x86 Emulator Accelerator (HAXM installer) — (haxm-windows_v7_6_1)
-                        https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows.
-                    </Text>
-                    <Text style={{ padding: 10, fontSize: 17, }}>
+                        Download software’s{'\n\n'}
+                        
+                        1. Node.js (Version 8 or newer) — https://nodejs.org/en/download/{'\n\n'}
+                        2. Chrome — https://www.google.com/chrome/{'\n\n'}
+                        3. Visual Studio Code (you can use any other editor or IDE){'\n\n'}
+                        4. Android Studio — Download and install the latest version of Android Studio for Windows from https://developer.android.com/studio/{'\n\n'}
+                        5. Java Development Kit (JDK 8 or newer).{'\n'}
+                        Download and install the latest version of Java SDK from http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html.{'\n\n'}
+                        6. Download and install Python 2.7.15 from https://www.python.org/downloads/windows/{'\n\n'}
+                        7. Intel x86 Emulator Accelerator (HAXM installer) — (haxm-windows_v7_6_1){'\n'}
+                        https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows.{'\n\n'}
                         8. BOIS setting if need to run emulator (enable VT-x in BIOS)
                     </Text>
                     
@@ -187,8 +173,18 @@ class androidsetup extends Component {
                         source={require('../../../common/Images/And14.png')}>
                     </ImageBackground>
                 </View>
-                <View style={{}}>
-                    
+                <View style={{padding:20}}>
+                <TouchableOpacity
+                            style={{
+                                alignSelf:'center', padding:10, borderRadius: 10, 
+                                backgroundColor: 'green'
+                                }}
+                                onPress={() => { this.props.navigation.goBack() }}
+                    >
+                        <Text style={{ fontSize: 16 ,color:'white', fontWeight:'bold', alignSelf:'center'}}>
+                            Back to SetUp Page
+                        </Text>
+                    </TouchableOpacity>
 
                 </View>
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, TouchableOpacity, Alert, Button } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert, Button, FlatList } from 'react-native';
 import { styles, buttons, heading, textinput } from '../../../common/style';
 import Modal from 'react-native-modal';
 import { RNCamera } from 'react-native-camera';
 import BarCodeScanner from './BarCode';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import {Helper} from '../../../common/helperComponent'
 
 class QRSetup extends Component {
     constructor(props) {
@@ -23,33 +22,31 @@ class QRSetup extends Component {
             city: '',
             cityName: '',
             isLoading: false,
-            list: []
+            list: [],
         };
     }
-    componentDidMount() {
-        this.getCity();
-    }
-    getCity = async () => {
-        let listData = await AsyncStorage.getItem(global.globalCityList)
-        let tempData = JSON.parse(listData)
-        console.log('QrScanner listData- ', listData)
-        console.log('tempData - ', tempData)
+    // componentDidMount() {
+    //     this.getCity();
+    // }
+    // getCity = async () => {
+    //     let listData = await AsyncStorage.getItem(global.globalCityList)
+    //     let cityData = JSON.parse(listData)
+    //     console.log('QrScanner listData- ', listData)
+    //     console.log('cityData - ', cityData)
 
-        //  this.setState({list: tempData})
-    }
-    getTempList = async () => {
-        let listData = await AsyncStorage.getItem(global.globalCityList)
-        let tempData = JSON.parse(listData)
-        return <View>
-            <Text>{JSON.stringify(tempData)}</Text>
-        </View>
-    }
-
-
+    //     //  this.setState({list: cityData})
+    // }
+    // getcityList = async () => {
+    //     let listData = await AsyncStorage.getItem(global.globalCityList)
+    //     let cityData = JSON.parse(listData)
+    //     return <View>
+    //         <Text>{JSON.stringify(cityData)}</Text>
+    //     </View>
+    // }
 
     //Setting up text
     setText = (text) => {
-        this.setState({ temp: text })
+        this.setState({ city: text })
     }
     getText = () => {
         <View>
@@ -65,7 +62,6 @@ class QRSetup extends Component {
             photo: (!this.state.photo)
         });
     }
-
 
     onClearClicked() {
         this.setState({
@@ -83,7 +79,7 @@ class QRSetup extends Component {
     onSuccessScan(scannedData) {
         if (scannedData && scannedData.data) {
             this.setState({
-                qrcode: scannedData.data,
+                cityName: scannedData.data,
                 shouldDisplayCamera: false,
             });
         } else if (scannedData && scannedData.data === '') {
@@ -118,12 +114,13 @@ class QRSetup extends Component {
 
     //Set update function for Fetch
     getSetCityName(city) {
+        
         this.setState({ cityName: city });
     }
-    getCurrentTemp = (city) => {
+    getCurrentcity = (city) => {
         let { isLoading, list } = this.state;
         this.setState({ isLoading: true });
-        let tempList = list;
+        let cityList = list;
         console.log('city', city);
 
         let url =
@@ -137,23 +134,38 @@ class QRSetup extends Component {
                 console.log('responseData ', responseData);
                 this.setState({ isLoading: false });
                 let data = {
-                    cityName: city, Temp: responseData.main.temp
+                    cityName: city, temp: responseData.main.temp
                 }
                 console.log('responseData data', data);
-                console.log('responseData tempList before', tempList);
+                console.log('responseData cityList before', list);
 
-                tempList = tempList.push(data)
-                console.log('responseData tempList after', tempList);
-                this.setState({ list: tempList })
+                cityList = cityList.push(data)
+                console.log('responseData cityList after', cityList);
+                // this.setState({ list: list })
 
-                AsyncStorage.setItem(global.globalCityList, JSON.stringify(tempList))
+
+                // AsyncStorage.setItem(global.globalCityList, JSON.stringify(cityList))
             })
             .catch((error) => {
                 this.setState({ isLoading: false });
                 console.log(error);
             });
     };
+    eachItem(item) {
+        return (
 
+            <View style={{borderColor:'green', borderWidth: 1, padding: 10, margin:5, borderRadius:10 }}>
+                <Helper
+                leftText={'City :'}
+                rightText={item.cityName}
+                />
+                <Helper
+                leftText={'Temperature :'}
+                rightText={Math.round(item.temp - 273)}
+                />
+            </View>
+            );
+    }
 
 
 
@@ -162,11 +174,11 @@ class QRSetup extends Component {
         var { shouldDisplayCamera, qrcode } = this.state;
 
         return (
-            <View>
+            <View style={{marginTop:Platform.OS=='ios'?40:10}}>
                 <Text style={{
-                    fontWeight: 'bold', alignSelf: 'center', fontSize: 20
+                    fontWeight: 'bold', alignSelf: 'center', fontSize: 20, backgroundColor:'#7fffd4'
                 }}>
-                    QR Code Scanner Trial
+                    QR Code Scanner
                 </Text>
                 <View style={{ flexDirection: 'row', flext: 1, paddingTop: 20, paddingLeft: 15 }}>
                     <View style={{ flext: 0.5, }}>
@@ -180,11 +192,6 @@ class QRSetup extends Component {
                             onChangeText={text => this.setState({ cityName: text })}
                             value={this.state.cityName}
                         />
-                        <TouchableOpacity onPress={this.getText}>
-                            <Text style={{ color: 'blue' }}>
-                                Get Data
-                            </Text>
-                        </TouchableOpacity>
                     </View>
 
                     <View style={{ flext: 0.5, marginLeft: 10, width: '45%', }}>
@@ -201,7 +208,7 @@ class QRSetup extends Component {
                             <Modal
                                 animationType="slide"
                                 transparent={false}
-                                visible={shouldDisplayCamera} // todo: useless prop: remove after checking
+                                visible={shouldDisplayCamera} 
                                 onRequestClose={() => {
                                     this.setState({ shouldDisplayCamera: !shouldDisplayCamera });
                                 }}>
@@ -221,13 +228,35 @@ class QRSetup extends Component {
                 </View>
                 {qrcode && <Text>{'QRcode   ' + this.state.qrcode + ' ' + this.state.getText}</Text>}
                 <View style={{ marginTop: 30, alignSelf: 'center', padding: 20 }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#8b4513' }}>
-                        Fetch Function Implementation
-                    </Text>
-                    <Button title="Find Tempreature" onPress={() => { this.getCurrentTemp(this.state.cityName) }}></Button>
-                    <View>
-                        <Text>{JSON.stringify(this.state.list)}</Text>
+                    <View style={{padding:20}}>
+                        <Button title="Find Temperature" onPress={() => { this.getCurrentcity(this.state.cityName) }}></Button>
                     </View>
+                    {/* <View>
+                        <Text>{JSON.stringify(this.state.list)}</Text>
+                    </View> */}
+                </View>
+                <View>
+
+                <FlatList
+                    data={this.state.list}
+                    renderItem={({ item }) => (
+                        this.eachItem(item)
+                    )}
+                    keyExtractor={(item) => item.cityName}
+                />
+                </View>
+                <View style={{padding:20}}>
+                    <TouchableOpacity
+                            style={{
+                                alignSelf:'center', padding:10, borderRadius: 10, 
+                                backgroundColor: 'green'
+                                }}
+                                onPress={() => { this.props.navigation.goBack() }}
+                        >
+                        <Text style={{ fontSize: 16 ,color:'white', fontWeight:'bold', alignSelf:'center'}}>
+                            Back to SetUp Page
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )

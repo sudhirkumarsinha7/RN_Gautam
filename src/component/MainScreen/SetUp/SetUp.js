@@ -12,10 +12,10 @@ class SetUp extends Component {
                 <Text style={{ padding: 10, fontSize: 20, fontWeight: 'bold', alignSelf:'center', color:'red'}}>
                     Welcome to the setup page.
                 </Text>
-                <Text style={{ padding: 30, fontSize: 15 }}>
+                <Text style={{ padding: 20, fontSize: 17 }}>
                     1. Here You can set your enviornments for both Android and iOS.
                 </Text>
-                <Text style={{padding: 30, fontSize: 15 }}>
+                <Text style={{padding: 20, fontSize: 17 }}>
                     2. You will also got to know about the different packages you need to develop an Andoid app and iOS App.
                 </Text>
 

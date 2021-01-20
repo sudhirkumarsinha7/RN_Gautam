@@ -27,7 +27,7 @@ class profileDetails extends Component {
         // this.setState({
         //     photo: (!this.state.photo)
         // });
-        this.chooseFile.bind(this)
+        this.chooseFile()
     };
     alertFun = () => {
         alert('Not Implemented Yet')
@@ -88,7 +88,7 @@ class profileDetails extends Component {
                                 <Text style={{ alignSelf: 'center' }}>
                                     Change Image
                                 </Text>
-                                <TouchableOpacity
+                                {/* <TouchableOpacity
                                     style={{
                                         marginTop: 50, marginLeft: 20, marginRight: 220,
                                         alignItems: 'center', borderRadius: 100,
@@ -107,8 +107,8 @@ class profileDetails extends Component {
                                     onPress={this.alertFun}
                                 >
                                     <Text style={{ fontWeight: 'bold', color: 'white' }}>Gallery</Text>
-                                </TouchableOpacity>
-
+                                </TouchableOpacity> */}
+{/* 
                                 <TouchableOpacity
                                     style={{
                                         marginTop: 10, marginLeft: 120, marginRight: 120,
@@ -118,10 +118,10 @@ class profileDetails extends Component {
                                     onPress={this.onClick}
                                 >
                                     <Text style={{ fontWeight: 'bold', color: 'white' }}>Cancel</Text>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
 
                             </View>
-                        </Modal>
+                        </Modal> 
                     </View>
                 </View>
 
